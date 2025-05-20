@@ -1,0 +1,9 @@
+operate     KEYWORD1
+setPin      KEYWORD2
+setSpeed    KEYWORD2
+move        KEYWORD2
+home        KEYWORD2
+getCurrentPos   KEYWORD2
+setHoming   KEYWORD2
+setPosition KEYWORD2
+setPositionLimits   KEYWORD2
