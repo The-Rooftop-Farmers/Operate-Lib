@@ -1,10 +1,10 @@
 # Operate
 
-**Easy stepper motor control class for Arduino with homing and position limits.**
+Easy stepper motor control class for Arduino with homing and position limits.
 
 ## Overview
 
-`Operate` is a lightweight Arduino library designed for easy and flexible control of stepper motors. It provides a simple class interface for basic stepper operations, including:
+Operate is a lightweight Arduino library designed for easy and flexible control of stepper motors. It provides a simple class interface for basic stepper operations, including:
 
 - Setting step and direction pins
 - Setting motor speed (via microsecond delay)
@@ -18,17 +18,15 @@ This library is ideal for DIY CNC, pick-and-place, robotics, or any project that
 
 ## Features
 
-- **Simple API** for stepper motor movement
-- **Homing function** using a limit switch
-- **Position limiting** to prevent out-of-range movement
-- **Speed adjustment** using microsecond delay
-- **No hardware timer usage** – works on any Arduino digital pins
+- Simple API for stepper motor movement
+- Homing function using a limit switch
+- Position limiting to prevent out-of-range movement
+- Speed adjustment using microsecond delay
+- No hardware timer usage – works on any Arduino digital pins
 
 ---
 
-## Getting Started
-
-### Installation
+## Installation
 
 1. Download or clone this repository.
 2. Place the `Operate` folder into your `Arduino/libraries` directory.
@@ -37,78 +35,20 @@ This library is ideal for DIY CNC, pick-and-place, robotics, or any project that
 
 ---
 
-### Usage Example
+## Examples
 
-Move a stepper motor forward for 2 seconds, then backward for 2 seconds:
+You can find example usage sketches in the [`examples/`](https://github.com/The-Rooftop-Farmers/Operate-Lib/tree/main/examples) directory. These include:
 
-```cpp
-#include <operate.h>
-
-#define STEP_PIN 2
-#define DIR_PIN 5
-
-operate motor;
-
-void setup() {
-  pinMode(STEP_PIN, OUTPUT);
-  pinMode(DIR_PIN, OUTPUT);
-
-  motor.setPin(STEP_PIN, DIR_PIN);
-  motor.setSpeed(300); // microseconds between steps
-}
-
-void loop() {
-  // Move forward for 2 seconds
-  unsigned long startTime = millis();
-  while (millis() - startTime < 2000) {
-    motor.move(1, 1);
-  }
-
-  delay(500);
-
-  // Move backward for 2 seconds
-  startTime = millis();
-  while (millis() - startTime < 2000) {
-    motor.move(1, 0);
-  }
-
-  delay(2000);
-}
-```
-
-You can find more usage examples in the `examples/` folder.
+- Basic stepper operation
+- Speed control
+- Homing
+- Using position limits
 
 ---
 
-## API Reference
+## Documentation
 
-### Class: `operate`
-
-#### Methods
-
-- `void setPin(int stepPin, int dirPin);`  
-  Set the step and direction pins.
-
-- `void setSpeed(int microseconds);`  
-  Set the delay between steps (lower is faster).
-
-- `void move(int steps, int dir);`  
-  Move the motor by `steps` steps. `dir`: 1 = forward, 0 = backward.
-
-- `int home();`  
-  Home the motor using the configured limit switch.
-
-- `int getCurrentPos();`  
-  Get the current step position.
-
-- `int setHoming(int enabled, int speed, int timeout, int switchPin);`  
-  Configure homing.
-
-- `int setPosition(long pos);`  
-  Move to a specific position, respecting limits.
-
-- `int setPositionLimits(long max, long min);`  
-  Set upper and lower bounds for movement.
+For detailed usage and the full API reference, please see the [Wiki](https://github.com/The-Rooftop-Farmers/Operate-Lib/wiki).
 
 ---
 
